@@ -67,12 +67,11 @@ const liri = () => {
     `
     ~~~~~~~~~~~~~~~~~~~~
     Venue: ${e.venue.name}
-    Location: ${e.venue.city} ${e.venue.region}, ${e.venue.country}
+    Location: ${e.venue.city} ${e.venue.region === '' ? e.venue.country : e.venue.region + ', ' + e.venue.country}
     Date: ${moment(e.datetime, 'YYYY-MM-DDTHH:mm:ss').format('MM/DD/YYYY')}
-    ~~~~~~~~~~~~~~~~~~~~
-    `)
-            
+    ~~~~~~~~~~~~~~~~~~~~`)
             })
+            restart()
           })
           .catch(err => {
             if (err.response.status === 404) {
